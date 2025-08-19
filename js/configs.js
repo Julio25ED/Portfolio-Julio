@@ -17,5 +17,50 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled'); // Se estiver no topo, remove a classe
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null, 
+      rootMargin: '0px',
+      threshold: 0.3 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Seleciona todos os elementos com a classe 'scroll-animate'
+    const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+
+    // Começa a observar cada um desses elementos
+    elementsToAnimate.forEach(element => {
+      observer.observe(element);
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+  elementsToAnimate.forEach(el => observer.observe(el));
+});
+
 
 
