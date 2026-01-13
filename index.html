@@ -17,6 +17,7 @@
   <!--css-->
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/stars.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
 
   <!--fav-icon-->
   <link rel="icon" href="./assets/icons/fav_icon.png" type="image/x-icon" />
@@ -41,6 +42,7 @@
           <a class="nav_a" href="#sobre-mim">About Me</a>
         </li>
         <li class="nav_li"><a class="nav_a" href="#projetos">Projects</a></li>
+        <li class="nav_li"><a class="nav_a" href="#contato">Contact</a></li>
       </ul>
     </nav>
 
@@ -52,7 +54,7 @@
     <section class="page-1 fade-in-on-load scroll-animate" id="home">
       <div class="home-page">
         <div>
-          <p class="txt1">Olá! meu nome é</p>
+          <p class="txt1">Olá! meu nome é ></p>
           <h1 class="txt2">Julio Eduardo</h1>
           <span class="txt3"></span>
 
@@ -82,7 +84,8 @@
             Olá, me chamo Julio Eduardo, sou de Goiânia, Goiás. Atualmente sou
             estudante de Análise e Desenvolvimento de Sistemas e meu foco principal
             é o desenvolvimento <b>Back-end</b>, com ênfase em
-            <b>JAVA e Spring Boot</b> e procurando expandir meu conhecimentos em <b>C#</b>. Busco sempre criar um código limpo,
+            <b>JAVA e Spring Boot</b> e procurando expandir meu conhecimentos em <b>C#</b>. Busco sempre criar um código
+            limpo,
             funcional e bem estruturado.
           </p>
           <p>
@@ -130,6 +133,10 @@
             <div class="skill-item" data-tooltip="MongoDB">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
                 alt="Ícone MongoDB" />
+            </div>
+            <div class="skill-item" data-tooltip="Docker">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg"
+                alt="Ícone Docker" />
             </div>
             <div class="skill-item" data-tooltip="Git">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Ícone Git" />
@@ -187,20 +194,26 @@
 
         <div class="project-card scroll-animate">
           <div class="project-image">
-            <img src="https://placehold.co/800x450/222222/ffffff?text=Barbershop+SaaS"
-              alt="Preview do projeto Barbershop SaaS">
+            <img src="https://placehold.co/800x450/222222/ffffff?text=Comming+Soon" alt="Coming Soon">
           </div>
           <div class="project-content">
-            <h3>Barbershop SaaS</h3>
-            <p>Uma plataforma de agendamento e gestão para barbearias, com controle de clientes, serviços e sistema de
-              agendamento online.</p>
+            <h3>Coming Soon</h3>
+            <p>Estou utilizando o poder do ecossistema Spring para criar uma solução de Gestão de Sistemas .</p>
             <div class="project-techs">
-              <div class="tech-icon" data-tooltip="Node.js">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+              <div class="tech-icon" data-tooltip="Java">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Ícone Java" />
               </div>
-              <div class="tech-icon" data-tooltip="MongoDB">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                  alt="MongoDB">
+              <div class="tech-icon" data-tooltip="Spring">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                  alt="Ícone Spring" />
+              </div>
+              <div class="tech-icon" data-tooltip="Postman">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                  alt="Ícone Postman" />
+              </div>
+              <div class="tech-icon" data-tooltip="Docker">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg"
+                  alt="Ícone Docker" />
               </div>
             </div>
             <div class="project-links">
@@ -208,8 +221,46 @@
             </div>
           </div>
         </div>
-
       </div>
+    </section>
+
+    <section class="projects scroll-animate" id="contato">
+      <div class="container-contato">
+
+        <div class="contact-box">
+          <h3>Me envie uma mensagem:</h3>
+          <form action="https://formsubmit.co/julio25.dev@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="input-group">
+              <input type="text" name="name" placeholder="Seu Nome" required>
+            </div>
+            <div class="input-group">
+              <input type="email" name="email" placeholder="Seu E-mail" required>
+            </div>
+            <div class="input-group">
+              <textarea name="message" rows="5" placeholder="Como posso te ajudar?" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+          </form>
+        </div>
+        <div class="cv-card">
+          <div class="cv-content">
+            <div class="cv-icon-circle">
+              <i class="fa-solid fa-file-invoice"></i>
+            </div>
+            <h3>Currículo</h3>
+            <p>Acesse minhas informações técnicas, habilidades e experiências detalhadas.</p>
+            <ul class="cv-highlights">
+              <li><i class="fa-solid fa-check"></i> Formação Acadêmica</li>
+              <li><i class="fa-solid fa-check"></i> Stack Tecnológica</li>
+              <li><i class="fa-solid fa-check"></i> Certificações</li>
+            </ul>
+            <a href="assets/cv/Julio_Eduardo-Cv.pdf" download class="cv-button">
+              <span>Download CV</span>
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+        </div>
     </section>
   </main>
 
@@ -219,7 +270,7 @@
         <span class="footer-name">© 2025 Julio Eduardo – Todos os direitos reservados.</span>
       </div>
       <div class="footer-email">
-        <a href="mailto:julio25.dev@email.com">julio25.dev@email.com</a>
+        <a href="mailto:julio25.dev@email.com">julio25.dev@gmail.com</a>
       </div>
     </div>
     <div class="footer-line"></div>
