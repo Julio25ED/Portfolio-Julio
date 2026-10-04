@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/navbar.css" />
   <link rel="stylesheet" href="./css/hero.css" />
+  <link rel="stylesheet" href="./css/about.css" />
 
   <link rel="icon" href="./assets/icons/fav_icon.png" />
 </head>
@@ -162,7 +163,56 @@
       </div>
     </section>
 
-    <section class="section about" id="sobre"></section>
+    <section class="section about" id="sobre">
+      <div class="container about__grid">
+        <div data-reveal>
+          <p class="eyebrow about__eyebrow">01 — Sobre mim</p>
+
+          <div class="about__id">
+            <img class="about__avatar" src="./assets/img/eu2.jpg" width="64" height="64"
+              alt="Retrato de Julio Eduardo" loading="lazy" />
+            <div>
+              <div class="about__name">Julio Eduardo</div>
+              <div class="about__place">Goiânia, Goiás</div>
+            </div>
+          </div>
+
+          <h2 class="about__title">
+            Desenvolvedor Full Stack, formado em Análise e Desenvolvimento de Sistemas.
+          </h2>
+          <p class="about__text">
+            Foco em Node.js e Vue.js. No dia a dia, cuido da sustentação e evolução de sistemas em
+            produção: investigo a causa raiz dos problemas e implemento soluções definitivas. Hoje
+            exploro IA, LLMs e agentes para acelerar o ciclo de desenvolvimento.
+          </p>
+        </div>
+
+        <div class="config" data-reveal aria-hidden="true">
+          <div class="config__head">
+            <span>julio.config.ts</span>
+            <span>TS</span>
+          </div>
+          <div class="config__body">
+            <div><span class="config__kw">export default</span> {</div>
+            <div class="indent">name: <span class="config__str">"Julio Eduardo"</span>,</div>
+            <div class="indent">role: <span class="config__str">"Full Stack Developer"</span>,</div>
+            <div class="indent">company: <span class="config__str">"iRancho"</span>,</div>
+            <div class="indent">education: <span class="config__str">"ADS · UNIGOIÁS"</span>,</div>
+            <div class="indent config__status">
+              status: <span class="config__str">"building..."</span>
+              <span class="dot" data-pulse></span>
+            </div>
+            <div>}</div>
+          </div>
+          <div class="config__facts">
+            <div class="config__fact"><span class="config__check">✓</span>APIs REST</div>
+            <div class="config__fact"><span class="config__check">✓</span>Sustentação</div>
+            <div class="config__fact"><span class="config__check">✓</span>Frontend</div>
+            <div class="config__fact"><span class="config__check">✓</span>Databases</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section skills" id="stack"></section>
 
