@@ -100,16 +100,6 @@
     outEl.innerHTML = html;
   }
 
-  if (!cmdEl || !outEl) return;
-
-  if (!JD.motion) {
-    // Sem animação, o terminal aparece com o resultado completo
-    cmdEl.textContent = CMD;
-    if (cursorEl) cursorEl.style.display = 'none';
-    renderOut(OUT.length);
-    return;
-  }
-
   var cmdLen = 0;
   var outN = 0;
   var timer;
@@ -135,28 +125,44 @@
     }
   }
 
-  timer = setTimeout(step, 1200);
+  if (cmdEl && outEl) {
+    if (JD.motion) {
+      timer = setTimeout(step, 1200);
 
-  if (cursorEl) {
-    setInterval(function () {
-      cursorEl.style.opacity = cursorEl.style.opacity === '0' ? '1' : '0';
-    }, 530);
+      if (cursorEl) {
+        setInterval(function () {
+          cursorEl.style.opacity = cursorEl.style.opacity === '0' ? '1' : '0';
+        }, 530);
+      }
+    } else {
+      // Sem animação, o terminal já aparece com o build concluído
+      cmdEl.textContent = CMD;
+      if (cursorEl) cursorEl.style.display = 'none';
+      renderOut(OUT.length);
+    }
   }
 
   /* --- Pipeline ----------------------------------------------------------- */
   var items = hero.querySelectorAll('.pipeline__item');
   if (items.length) {
-    var stage = 0;
+    // Com reduced motion o pipeline não gira: fica parado no último estágio,
+    // o mesmo estado final que o terminal mostra ao lado.
+    var stage = JD.motion ? 0 : items.length - 1;
+
     var paint = function () {
       items.forEach(function (el, i) {
         el.classList.toggle('is-done', i < stage);
         el.classList.toggle('is-active', i === stage);
       });
     };
+
     paint();
-    setInterval(function () {
-      stage = (stage + 1) % items.length;
-      paint();
-    }, 2400);
+
+    if (JD.motion) {
+      setInterval(function () {
+        stage = (stage + 1) % items.length;
+        paint();
+      }, 2400);
+    }
   }
 })();
