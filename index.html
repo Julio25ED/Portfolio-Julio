@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/navbar.css" />
 
   <link rel="icon" href="./assets/icons/fav_icon.png" />
 </head>
@@ -52,6 +53,22 @@
   <div class="progress" aria-hidden="true">
     <div class="progress__bar" data-progress></div>
   </div>
+
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#home">
+        <span class="nav__logo-dot" aria-hidden="true"></span>JulioDev
+      </a>
+      <a class="nav__link" href="#sobre">Sobre</a>
+      <a class="nav__link" href="#stack">Skills</a>
+      <a class="nav__link" href="#experiencia">Experiência</a>
+      <a class="nav__link" href="#projetos">Projetos</a>
+      <a class="nav__link" href="#contato">Contato</a>
+      <button class="nav__theme" type="button" data-theme-toggle aria-label="Ativar tema claro">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
 
   <main>
     <section class="hero" id="home"></section>
