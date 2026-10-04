@@ -38,6 +38,7 @@
 
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/navbar.css" />
+  <link rel="stylesheet" href="./css/hero.css" />
 
   <link rel="icon" href="./assets/icons/fav_icon.png" />
 </head>
@@ -71,7 +72,95 @@
   </nav>
 
   <main>
-    <section class="hero" id="home"></section>
+    <section class="hero" id="home">
+      <div class="hero__glow" data-drift="1" aria-hidden="true"></div>
+      <div class="hero__spot" aria-hidden="true"></div>
+
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow hero__eyebrow" data-enter="150">Olá, eu sou</p>
+          <h1 class="hero__title" data-enter="300">Julio<br />Eduardo.</h1>
+          <p class="hero__role" data-enter="500">Full Stack Developer</p>
+          <p class="hero__lead" data-enter="600">
+            Construo e mantenho aplicações web em produção — estáveis, escaláveis e bem estruturadas.
+          </p>
+          <div class="hero__actions" data-enter="700">
+            <a class="btn btn--solid" href="#projetos">Explorar projetos <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="https://github.com/Julio25ED" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Cenário 3D: o palco inteiro inclina com o cursor (--rx / --ry) -->
+        <div class="hero__scene" data-enter="800" aria-hidden="true">
+          <div class="stage">
+            <div class="stage__shadow"></div>
+
+            <div class="laptop">
+              <div class="laptop__frame">
+                <div class="win laptop__screen">
+                  <div class="win__bar">
+                    <span class="win__dot"></span>
+                    <span class="win__dot"></span>
+                    <span class="win__dot"></span>
+                    <span class="win__tab laptop__tab">developer.ts</span>
+                  </div>
+
+                  <div class="laptop__code">
+                    <div><span class="kw">const</span> developer = {</div>
+                    <div class="indent">name: <span class="str">"Julio Eduardo"</span>,</div>
+                    <div class="indent">role: <span class="str">"Full Stack Developer"</span>,</div>
+                    <div class="indent">company: <span class="str">"iRancho"</span>,</div>
+                    <div class="indent">stack: [<span class="str">"Vue.js"</span>, <span class="str">"TypeScript"</span>,
+                      <span class="str">"Node.js"</span>]</div>
+                    <div>};</div>
+                  </div>
+
+                  <div class="term">
+                    <div>
+                      <span class="term__prompt">julio@dev:~$</span>
+                      <span data-term-cmd></span><span class="term__cursor" data-term-cursor>▍</span>
+                    </div>
+                    <div data-term-out></div>
+                  </div>
+                </div>
+              </div>
+              <div class="laptop__base"></div>
+              <div class="laptop__notch"></div>
+            </div>
+
+            <div class="chip-slot chip-slot--ts">
+              <div class="chip" data-float="0"><span class="chip__dot" style="background:#3178C6"></span>TypeScript</div>
+            </div>
+            <div class="chip-slot chip-slot--vue">
+              <div class="chip" data-float="1"><span class="chip__dot" style="background:#42B883"></span>Vue.js</div>
+            </div>
+            <div class="chip-slot chip-slot--node">
+              <div class="chip" data-float="2"><span class="chip__dot" style="background:#5FA04E"></span>Node.js</div>
+            </div>
+            <div class="chip-slot chip-slot--sql">
+              <div class="chip" data-float="3"><span class="chip__dot" style="background:#4169E1"></span>SQL</div>
+            </div>
+
+            <div class="pipeline-slot">
+              <div class="pipeline" data-float="4">
+                <div class="pipeline__head">
+                  <span>Pipeline</span>
+                  <span class="pipeline__status"><span class="dot"></span>Online</span>
+                </div>
+                <div class="pipeline__list">
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Frontend</div>
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Backend</div>
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Database</div>
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Deploy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section about" id="sobre"></section>
 
@@ -94,7 +183,9 @@
     </div>
   </footer>
 
+  <script src="./js/motion.js"></script>
   <script src="./js/theme.js"></script>
+  <script src="./js/hero.js"></script>
 </body>
 
 </html>
