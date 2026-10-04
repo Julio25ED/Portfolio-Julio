@@ -173,8 +173,11 @@
           <p class="eyebrow about__eyebrow">01 — Sobre mim</p>
 
           <div class="about__id">
-            <img class="about__avatar" src="./assets/img/eu2.jpg" width="64" height="64"
-              alt="Retrato de Julio Eduardo" loading="lazy" />
+            <picture>
+              <source srcset="./assets/img/avatar.webp" type="image/webp" />
+              <img class="about__avatar" src="./assets/img/avatar.jpg" width="64" height="64"
+                alt="Retrato de Julio Eduardo" loading="lazy" decoding="async" />
+            </picture>
             <div>
               <div class="about__name">Julio Eduardo</div>
               <div class="about__place">Goiânia, Goiás</div>
