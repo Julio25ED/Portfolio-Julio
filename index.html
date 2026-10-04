@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="./css/about.css" />
   <link rel="stylesheet" href="./css/skills.css" />
   <link rel="stylesheet" href="./css/experience.css" />
+  <link rel="stylesheet" href="./css/projects.css" />
 
   <link rel="icon" href="./assets/icons/fav_icon.png" />
 </head>
@@ -387,7 +388,160 @@
       </div>
     </section>
 
-    <section class="section projects" id="projetos"></section>
+    <section class="section projects" id="projetos">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">04 — Projetos</p>
+          <h2 class="section-title">Trabalhos selecionados.</h2>
+        </div>
+        <div class="projects__list">
+        <article class="project" data-reveal>
+          <div class="project__spot" aria-hidden="true"></div>
+
+          <div class="project__media" aria-hidden="true">
+            <div class="project__frame">
+              <div class="win project__win">
+              <div class="win__bar">
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__tab">fluxos — api</span>
+              </div>
+              <div class="project__code">
+                <div class="endpoint">
+                  <span class="endpoint__verb verb--get">GET</span>
+                  <span class="endpoint__path">/ordens-servico</span>
+                  <span class="c-ok">200</span>
+                </div>
+                <div class="endpoint">
+                  <span class="endpoint__verb verb--post">POST</span>
+                  <span class="endpoint__path">/ordens-servico</span>
+                  <span class="c-ok">201</span>
+                </div>
+                <div class="endpoint">
+                  <span class="endpoint__verb verb--put">PUT</span>
+                  <span class="endpoint__path">/ordens-servico/{id}/finalizar</span>
+                  <span class="c-ok">200</span>
+                </div>
+                <div class="c-dim project__brace">{</div>
+                <div class="indent">"id": <span class="c-num">42</span>,</div>
+                <div class="indent">"cliente": <span class="c-str">"Fazenda Boa Vista"</span>,</div>
+                <div class="indent">"status": <span class="c-str">"FINALIZADA"</span></div>
+                <div class="c-dim">}</div>
+              </div>
+              </div>
+            </div>
+            <div class="project__overlay">
+              <span class="project__cta">VER NO GITHUB ↗</span>
+            </div>
+          </div>
+
+          <div class="project__body">
+            <div class="project__top">
+              <span class="project__num" aria-hidden="true">01</span>
+              <span class="project__status project__status--live">Funcional</span>
+            </div>
+            <h3 class="project__name">FluxOS</h3>
+            <p class="project__techs">Java 17 • Spring Boot 3 • JPA • PostgreSQL • Docker</p>
+            <p class="project__desc">API REST de gestão de ordens de serviço com Clean Architecture, relacionamento 1:N entre clientes e OS e validação de estados de negócio.</p>
+            <div class="project__links">
+            <a class="project__link" href="https://github.com/Julio25ED/FluxOS" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Ver FluxOS no GitHub
+            </a>
+            </div>
+          </div>
+        </article>
+        <article class="project" data-reveal>
+          <div class="project__spot" aria-hidden="true"></div>
+
+          <div class="project__media" aria-hidden="true">
+            <div class="project__frame">
+              <div class="win project__win">
+              <div class="win__bar">
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__tab">mail-api</span>
+              </div>
+              <div class="project__code">
+                <div><span class="c-kw">POST</span> /v1/emails/send</div>
+                <div class="c-dim project__brace project__brace--tight">{</div>
+                <div class="indent">"to": <span class="c-str">"cliente@email.com"</span>,</div>
+                <div class="indent">"template": <span class="c-str">"boas-vindas"</span></div>
+                <div class="c-dim">}</div>
+                <div class="flow">
+                  <span class="flow__step">queued</span>
+                  <span class="c-dim">→</span>
+                  <span class="flow__step">sending</span>
+                  <span class="c-dim">→</span>
+                  <span class="flow__step flow__step--done">delivered ✓</span>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="project__overlay">
+              <span class="project__cta">EM BREVE</span>
+            </div>
+          </div>
+
+          <div class="project__body">
+            <div class="project__top">
+              <span class="project__num" aria-hidden="true">02</span>
+              <span class="project__status">Coming soon</span>
+            </div>
+            <h3 class="project__name">Mail API</h3>
+            <p class="project__techs">Node.js • TypeScript • Filas • SMTP</p>
+            <p class="project__desc">API para envio de e-mails transacionais com templates, fila de processamento e acompanhamento de status de entrega.</p>
+            <div class="project__links">
+            <span class="project__soon">Repositório em breve</span>
+            </div>
+          </div>
+        </article>
+        <article class="project" data-reveal>
+          <div class="project__spot" aria-hidden="true"></div>
+
+          <div class="project__media" aria-hidden="true">
+            <div class="project__frame">
+              <div class="win project__win">
+              <div class="win__bar">
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__tab">ProcessadorPagamento.cs</span>
+              </div>
+              <div class="project__code">
+                <div><span class="c-kw">ICalculadoraDesconto</span> calc = <span class="c-kw">new</span> DescontoVIP();</div>
+                <div><span class="c-kw">var</span> processador = <span class="c-kw">new</span> ProcessadorPagamento(calc);</div>
+                <div>processador.ProcessarPagamento(<span class="c-num">1000</span>, <span class="c-num">3</span>);</div>
+                <div class="console">Valor original: R$ 1000,00</div>
+                <div class="c-dim">Desconto: R$ 100,00 (10% VIP)</div>
+                <div class="c-ok">✓ Valor final: R$ 900,00</div>
+              </div>
+              </div>
+            </div>
+            <div class="project__overlay">
+              <span class="project__cta">VER NO GITHUB ↗</span>
+            </div>
+          </div>
+
+          <div class="project__body">
+            <div class="project__top">
+              <span class="project__num" aria-hidden="true">03</span>
+              <span class="project__status project__status--live">Estudo</span>
+            </div>
+            <h3 class="project__name">Sistema Bancário DIP</h3>
+            <p class="project__techs">C# • .NET 8 • SOLID</p>
+            <p class="project__desc">Processador de pagamentos que demonstra o Princípio da Inversão de Dependência com descontos por tipo de cliente.</p>
+            <div class="project__links">
+            <a class="project__link" href="https://github.com/Julio25ED/sistema-bancario-dip" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Ver Sistema Bancário DIP no GitHub
+            </a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
 
     <section class="section contact" id="contato"></section>
   </main>
@@ -405,6 +559,7 @@
   <script src="./js/motion.js"></script>
   <script src="./js/theme.js"></script>
   <script src="./js/hero.js"></script>
+  <script src="./js/spotlight.js"></script>
 </body>
 
 </html>
