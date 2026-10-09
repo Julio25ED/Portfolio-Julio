@@ -306,8 +306,23 @@
 }
 
 /* --- Responsivo ---------------------------------------------------------- */
-/* Abaixo de 600px o cenário encolhe e os elementos que mais transbordam da
-   caixa (pipeline, TypeScript e SQL) saem de cena. */
+/* Abaixo de 600px o cenário encolhe e os elementos que transbordam a caixa
+   saem de cena. */
+/* A perspectiva empurra os elementos com translateZ para fora do palco, então
+   eles transbordam até bem depois dos 600px sugeridos no handoff: medindo,
+   o TypeScript ainda sai pela esquerda em 705px. Esconder só abaixo de 600
+   deixaria os chips cortados pela borda em toda a faixa de tablet. */
+@media (max-width: 760px) {
+
+  /* Saem os dois que transbordam a caixa: TypeScript (left:-14%) e Vue.js
+     (right:-3%). Node.js e SQL ficam, porque cabem inteiros na tela. */
+  .pipeline-slot,
+  .chip-slot--ts,
+  .chip-slot--vue {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .hero {
     padding-top: 104px;
@@ -315,11 +330,5 @@
 
   .hero__scene {
     min-height: 380px;
-  }
-
-  .pipeline-slot,
-  .chip-slot--ts,
-  .chip-slot--sql {
-    display: none;
   }
 }

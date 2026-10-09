@@ -22,17 +22,28 @@
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   backdrop-filter: blur(16px) saturate(140%);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
-  /* No mobile a cápsula rola na horizontal em vez de quebrar linha */
+}
+
+/* Só a faixa de links rola na horizontal. O logo e o botão de tema ficam
+   ancorados nas pontas, senão no mobile eles saem da tela junto com os
+   links — e o botão de tema vira um controle que ninguém alcança. */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
 }
 
-.nav__inner::-webkit-scrollbar {
+.nav__links::-webkit-scrollbar {
   display: none;
 }
 
 .nav__logo {
+  flex: none;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -87,4 +98,13 @@
 
 .nav__theme:hover {
   background: var(--chip);
+}
+
+/* O esmaecimento na borda direita é a única pista de que a faixa rola, já que
+   a scrollbar está oculta. A classe é posta por js/scroll.js só quando a
+   faixa de fato transborda — uma media query fixa esmaeceria o último item
+   em larguras onde tudo já cabe. */
+.nav__links.is-scrollable {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 20px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 20px), transparent);
 }

@@ -124,3 +124,14 @@
 .config__check {
   color: var(--acc);
 }
+
+/* Em 320px as duas colunas cortam "Sustentação" e "Databases" */
+@media (max-width: 340px) {
+  .config__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .config__fact {
+    padding: 12px 18px;
+  }
+}

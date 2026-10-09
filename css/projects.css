@@ -284,3 +284,16 @@
 .project__brace--tight {
   margin-top: 8px;
 }
+
+/* Em 320px o JSON do FluxOS ultrapassa a janela */
+@media (max-width: 340px) {
+  .project__win {
+    /* A chamada ProcessarPagamento(1000, 3) é um token sem espaço e não
+       quebra; só cabe reduzindo o corpo. */
+    font-size: 10px;
+  }
+
+  .project__code {
+    padding: 12px 12px;
+  }
+}

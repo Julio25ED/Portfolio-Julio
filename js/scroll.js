@@ -8,7 +8,30 @@
 
   var bar = document.querySelector('[data-progress]');
   var links = document.querySelectorAll('.nav__link, .nav__logo');
+  var track = document.querySelector('.nav__links');
   var active = '';
+
+  /* Em telas estreitas a faixa de links rola e o item ativo pode estar fora
+     de vista. Quando isso acontece, centraliza ele na faixa — sem o ajuste,
+     o destaque da seção atual simplesmente nunca aparece no mobile. */
+  /* Marca a faixa quando ela transborda, para o CSS mostrar o esmaecimento
+     que indica haver mais itens à direita. */
+  function syncTrackState() {
+    if (!track) return;
+    track.classList.toggle('is-scrollable', track.scrollWidth > track.clientWidth + 1);
+  }
+
+  function revealInTrack(link) {
+    if (!track || !link) return;
+    if (track.scrollWidth <= track.clientWidth) return;
+
+    var left = link.offsetLeft - (track.clientWidth - link.offsetWidth) / 2;
+    if (track.scrollTo) {
+      track.scrollTo({ left: left, behavior: JD.motion ? 'smooth' : 'auto' });
+    } else {
+      track.scrollLeft = left;
+    }
+  }
 
   function onScroll() {
     var doc = document.documentElement;
@@ -31,6 +54,7 @@
     links.forEach(function (link) {
       if (link.getAttribute('href') === '#' + current) {
         link.setAttribute('aria-current', 'true');
+        revealInTrack(link);
       } else {
         link.removeAttribute('aria-current');
       }
@@ -38,8 +62,18 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('resize', function () {
+    syncTrackState();
+    onScroll();
+  }, { passive: true });
+
+  syncTrackState();
   onScroll();
+
+  // As fontes chegam depois do primeiro layout e mudam a largura dos links
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncTrackState);
+  }
 
   /* --- Scroll reveal ------------------------------------------------------ */
   if (!JD.motion) return;

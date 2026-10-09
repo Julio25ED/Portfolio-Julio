@@ -121,3 +121,21 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+/* Abaixo de 420px as três colunas do card espremem o texto em cinco linhas.
+   O botão passa a ocupar a largura toda, logo abaixo. */
+@media (max-width: 420px) {
+  .cv {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .cv__text {
+    min-width: 150px;
+  }
+
+  .cv__action {
+    width: 100%;
+    justify-content: center;
+  }
+}
