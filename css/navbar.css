@@ -1,0 +1,90 @@
+/* navbar.css — cápsula flutuante de navegação com indicador de seção e
+   botão de tema. Fica sobre tudo (z-index 100), abaixo só da barra de
+   progresso (200). */
+
+.nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  max-width: calc(100% - 24px);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  /* No mobile a cápsula rola na horizontal em vez de quebrar linha */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.nav__logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--acc);
+  box-shadow: 0 0 12px var(--acc);
+}
+
+.nav__link {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--muted);
+  background: transparent;
+  transition: background .25s ease, color .25s ease;
+}
+
+.nav__link:hover {
+  color: var(--fg);
+}
+
+/* Seção visível no momento — marcada por js/scroll.js */
+.nav__link[aria-current="true"] {
+  background: var(--chip);
+  color: var(--fg);
+}
+
+.nav__theme {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  transition: background .2s ease;
+}
+
+.nav__theme:hover {
+  background: var(--chip);
+}

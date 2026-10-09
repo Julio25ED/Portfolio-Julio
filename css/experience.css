@@ -1,0 +1,139 @@
+/* experience.css — timeline profissional. O conteúdo é uma sequência
+   cronológica real, então a marcação é uma <ol>; a linha vertical e os
+   marcadores substituem os números da lista. */
+
+.experience__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+/* A linha cresce de cima para baixo quando a seção entra na viewport */
+.timeline__line {
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--acc), var(--line));
+  transform-origin: top;
+}
+
+.timeline__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.timeline__item {
+  position: relative;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: -36px;
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--acc);
+  background: var(--bg);
+}
+
+/* O cargo atual é o único com o marcador preenchido */
+.timeline__item--current .timeline__dot {
+  background: var(--acc);
+}
+
+.timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.timeline__year {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--acc);
+}
+
+.timeline__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accGlow);
+  font-size: 12px;
+  color: var(--fg);
+}
+
+.timeline__badge .dot {
+  width: 6px;
+  height: 6px;
+}
+
+.timeline__role {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.timeline__company {
+  font-size: 14px;
+  color: var(--fg);
+  opacity: .75;
+  margin-bottom: 10px;
+}
+
+.timeline__text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 14px;
+}
+
+.timeline__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.timeline__point {
+  display: flex;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.timeline__point::before {
+  content: "→";
+  color: var(--acc);
+}
+
+.timeline__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.timeline__tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--muted);
+}

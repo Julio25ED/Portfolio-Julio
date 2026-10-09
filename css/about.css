@@ -1,0 +1,126 @@
+/* about.css — seção Sobre: apresentação à esquerda e card julio.config.ts
+   à direita, que repete os mesmos dados em forma de objeto. */
+
+.about {
+  /* O Sobre respira mais que as outras seções */
+  padding-block: clamp(96px, 12vw, 160px);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+.about__eyebrow {
+  margin-bottom: 28px;
+}
+
+.about__id {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.about__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.about__name {
+  font-weight: 500;
+}
+
+.about__place {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.about__title {
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  margin-bottom: 24px;
+  text-wrap: pretty;
+}
+
+.about__text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+/* --- Card julio.config.ts ------------------------------------------------ */
+/* Ao contrário das janelas de código dos projetos, este card acompanha o
+   tema: é a mesma superfície dos outros cards, só com texto monoespaçado. */
+.config {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  overflow: hidden;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.9;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.4);
+}
+
+.config__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.config__body {
+  padding: 24px 24px 8px;
+}
+
+.config__body .indent {
+  padding-left: 20px;
+}
+
+.config__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.config__kw {
+  color: var(--acc);
+}
+
+.config__str {
+  color: var(--str);
+}
+
+/* O gap de 1px sobre o fundo --line é o que desenha as linhas finas da grade */
+.config__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 16px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+}
+
+.config__fact {
+  display: flex;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--bg);
+}
+
+.config__fact i,
+.config__check {
+  color: var(--acc);
+}

@@ -2,283 +2,597 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!--Font-->
+  <title>Julio Eduardo — Full Stack Developer</title>
+  <meta name="description"
+    content="Portfólio de Julio Eduardo, Desenvolvedor Full Stack em Goiânia. Construo e mantenho aplicações web em produção com Vue.js, Node.js e TypeScript." />
+  <meta name="author" content="Julio Eduardo" />
+  <meta name="theme-color" content="#080808" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Julio Eduardo — Full Stack Developer" />
+  <meta property="og:description"
+    content="Construo e mantenho aplicações web em produção — estáveis, escaláveis e bem estruturadas." />
+  <meta property="og:url" content="https://julio25ed.github.io/Portfolio-Julio/" />
+  <meta property="og:image" content="https://julio25ed.github.io/Portfolio-Julio/assets/img/eu2.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tema aplicado antes da primeira pintura, para não piscar a cor errada -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('juliodev-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { }
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!--css-->
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/stars.css" />
-  <link rel="stylesheet" href="./css/responsive.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/navbar.css" />
+  <link rel="stylesheet" href="./css/hero.css" />
+  <link rel="stylesheet" href="./css/about.css" />
+  <link rel="stylesheet" href="./css/skills.css" />
+  <link rel="stylesheet" href="./css/experience.css" />
+  <link rel="stylesheet" href="./css/projects.css" />
+  <link rel="stylesheet" href="./css/contact.css" />
 
-  <!--fav-icon-->
-  <link rel="icon" href="./assets/icons/fav_icon.png" type="image/x-icon" />
-
-  <title>Portfólio JE</title>
+  <link rel="icon" href="./assets/icons/fav_icon.png" />
 </head>
 
 <body>
-  <div id="stars-container"></div>
-  <div class="button-wpp">
-    <a href="https://api.whatsapp.com/send/?phone=%2B5562986304680&text&type=phone_number&app_absent=0" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
+  <!-- Fundo fixo: grade com máscara, glow do cursor e glow ambiente -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__cursor"></div>
+    <div class="bg__glow" data-drift="3"></div>
   </div>
 
-  <header class="header fade-in-on-load">
-    <a href="index.html" class="header_logo">JulioDev7</a>
-    <nav class="menu-desktop">
-      <ul class="nav_ul">
-        <li class="nav_li"><a class="nav_a" href="#home"> Home </a></li>
-        <li class="nav_li">
-          <a class="nav_a" href="#sobre-mim">About Me</a>
-        </li>
-        <li class="nav_li"><a class="nav_a" href="#projetos">Projects</a></li>
-        <li class="nav_li"><a class="nav_a" href="#contato">Contact</a></li>
-      </ul>
-    </nav>
+  <div class="progress" aria-hidden="true">
+    <div class="progress__bar" data-progress></div>
+  </div>
 
-    <a href="https://github.com/Julio25ED" target="_blank">
-      <img class="gh" src="assets/icons/github.png" alt="github" />
-    </a>
-  </header>
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#home">
+        <span class="nav__logo-dot" aria-hidden="true"></span>JulioDev
+      </a>
+      <a class="nav__link" href="#sobre">Sobre</a>
+      <a class="nav__link" href="#stack">Skills</a>
+      <a class="nav__link" href="#experiencia">Experiência</a>
+      <a class="nav__link" href="#projetos">Projetos</a>
+      <a class="nav__link" href="#contato">Contato</a>
+      <button class="nav__theme" type="button" data-theme-toggle aria-label="Ativar tema claro">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+
   <main>
-    <section class="page-1 fade-in-on-load scroll-animate" id="home">
-      <div class="home-page">
+    <section class="hero" id="home">
+      <div class="hero__glow" data-drift="1" aria-hidden="true"></div>
+      <div class="hero__spot" aria-hidden="true"></div>
+
+      <div class="hero__grid">
         <div>
-          <p class="txt1">Olá! meu nome é ></p>
-          <h1 class="txt2">Julio Eduardo</h1>
-          <span class="txt3"></span>
-
-          <div class="icons-home">
-            <a href="https://www.linkedin.com/in/juliodev25/" target="_blank">
-              <i class="fa-brands fa-linkedin-in fa-lg" id="icon" style="color: #dadada"></i>
-            </a>
-
-            <a href="https://github.com/Julio25ED" target="_blank">
-              <i class="fa-brands fa-github fa-lg" id="icon" style="color: #dadada"></i>
-            </a>
-
-            <a href="https://www.instagram.com/jdesz_/">
-              <i class="fa-brands fa-instagram" id="icon" style="color: #dadada;"></i>
+          <p class="eyebrow hero__eyebrow" data-enter="150">Olá, eu sou</p>
+          <h1 class="hero__title" data-enter="300">Julio<br />Eduardo.</h1>
+          <p class="hero__role" data-enter="500">Full Stack Developer</p>
+          <p class="hero__lead" data-enter="600">
+            Construo e mantenho aplicações web em produção — estáveis, escaláveis e bem estruturadas.
+          </p>
+          <div class="hero__actions" data-enter="700">
+            <a class="btn btn--solid" href="#projetos">Explorar projetos <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="https://github.com/Julio25ED" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
             </a>
           </div>
         </div>
-        <img class="profile-img" src="assets/img/eu2.jpg" />
-      </div>
-    </section>
 
-    <section id="sobre-mim" class="scroll-animate">
-      <div class="container-me">
-        <div class="info-me">
-          <h2>Software Engineer</h2>
-          <p>
-            Olá, me chamo Julio Eduardo, sou de Goiânia, Goiás. Atualmente sou
-            estudante de Análise e Desenvolvimento de Sistemas e meu foco principal
-            é o desenvolvimento <b>Back-end</b>, com ênfase em
-            <b>JAVA e Spring Boot</b> e procurando expandir meu conhecimentos em <b>C#</b>. Busco sempre criar um código
-            limpo,
-            funcional e bem estruturado.
-          </p>
-          <p>
-            Tenho conhecimentos sólidos em <b>APIs RESTful</b>, banco de dados
-            relacionais e não-relacionais (<b>MySQL, PostgreSQL e MongoDB</b>),
-            versionamento com <b>Git/GitHub</b>, e utilizo boas práticas como os
-            princípios <b>SOLID</b> e arquiteturas como <b>MVC, REST e
-              Microserviços</b>,Além disso, tenho familiaridade com <b>Testes de Software</b>.
-          </p>
-          <p>
-            Sou dedicado, proativo e valorizo a comunicação e o trabalho em
-            equipe. Busco uma oportunidade para aplicar meus conhecimentos, aprender
-            com profissionais experientes e contribuir para o sucesso de projetos.
-          </p>
-        </div>
+        <!-- Cenário 3D: o palco inteiro inclina com o cursor (--rx / --ry) -->
+        <div class="hero__scene" data-enter="800" aria-hidden="true">
+          <div class="stage">
+            <div class="stage__shadow"></div>
 
-        <div class="skills-me">
-          <div class="skills-grid">
-            <div class="skill-item" data-tooltip="Java">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Ícone Java" />
-            </div>
-            <div class="skill-item" data-tooltip="Spring">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
-                alt="Ícone Spring" />
-            </div>
-            <div class="skill-item" data-tooltip="C#">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
-            </div>
-            <div class="skill-item" data-tooltip="Node.js">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                alt="Ícone Node.js" />
-            </div>
-            <div class="skill-item" data-tooltip="Postman">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
-                alt="Ícone Postman" />
-            </div>
-            <div class="skill-item" data-tooltip="MySQL">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                alt="Ícone MySQL" />
-            </div>
-            <div class="skill-item" data-tooltip="PostgreSQL">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                alt="Ícone PostgreSQL" />
-            </div>
-            <div class="skill-item" data-tooltip="MongoDB">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                alt="Ícone MongoDB" />
-            </div>
-            <div class="skill-item" data-tooltip="Docker">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg"
-                alt="Ícone Docker" />
-            </div>
-            <div class="skill-item" data-tooltip="Git">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Ícone Git" />
-            </div>
-            <div class="skill-item" data-tooltip="GitHub">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                alt="Ícone GitHub" />
-            </div>
-            <div class="skill-item" data-tooltip="HTML5">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                alt="Ícone HTML5" />
-            </div>
-            <div class="skill-item" data-tooltip="CSS3">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="Ícone CSS3" />
-            </div>
-            <div class="skill-item" data-tooltip="JavaScript">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                alt="Ícone JavaScript" />
+            <div class="laptop">
+              <div class="laptop__frame">
+                <div class="win laptop__screen">
+                  <div class="win__bar">
+                    <span class="win__dot"></span>
+                    <span class="win__dot"></span>
+                    <span class="win__dot"></span>
+                    <span class="win__tab laptop__tab">developer.ts</span>
+                  </div>
+
+                  <div class="laptop__code">
+                    <div><span class="kw">const</span> developer = {</div>
+                    <div class="indent">name: <span class="str">"Julio Eduardo"</span>,</div>
+                    <div class="indent">role: <span class="str">"Full Stack Developer"</span>,</div>
+                    <div class="indent">stack: [<span class="str">"Vue.js"</span>, <span class="str">"TypeScript"</span>,
+                      <span class="str">"Node.js"</span>]</div>
+                    <div>};</div>
+                  </div>
+
+                  <div class="term">
+                    <div>
+                      <span class="term__prompt">julio@dev:~$</span>
+                      <span data-term-cmd></span><span class="term__cursor" data-term-cursor>▍</span>
+                    </div>
+                    <div data-term-out></div>
+                  </div>
+                </div>
+              </div>
+              <div class="laptop__base"></div>
+              <div class="laptop__notch"></div>
             </div>
 
-          </div>
-        </div>
-    </section>
-
-    <section class="projects scroll-animate" id="projetos">
-      <h2>Meus Projetos</h2>
-      <div class="projects-grid">
-
-        <div class="project-card scroll-animate">
-          <div class="project-image">
-            <img src="assets/img/spotify_Clone.png" alt="Preview do projeto Spotify Clone">
-          </div>
-          <div class="project-content">
-            <h3>Spotify Clone</h3>
-            <p>Um clone simples da interface da página de pesquisa do Spotify, focado em replicar a organização e o
-              design visual com fidelidade.</p>
-            <div class="project-techs">
-              <div class="tech-icon" data-tooltip="HTML5">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
-              </div>
-              <div class="tech-icon" data-tooltip="CSS3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
-              </div>
-              <div class="tech-icon" data-tooltip="JavaScript">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                  alt="Ícone JavaScript" />
-              </div>
+            <div class="chip-slot chip-slot--ts">
+              <div class="chip" data-float="0"><span class="chip__dot" style="background:#3178C6"></span>TypeScript</div>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/Julio25ED/Spotify_Clone/tree/main" class="btn btn-primary"
-                aria-label="Acessar o projeto Spotify Clone" target="_blank">Ver Projeto</a>
+            <div class="chip-slot chip-slot--vue">
+              <div class="chip" data-float="1"><span class="chip__dot" style="background:#42B883"></span>Vue.js</div>
             </div>
-          </div>
-        </div>
+            <div class="chip-slot chip-slot--node">
+              <div class="chip" data-float="2"><span class="chip__dot" style="background:#5FA04E"></span>Node.js</div>
+            </div>
+            <div class="chip-slot chip-slot--sql">
+              <div class="chip" data-float="3"><span class="chip__dot" style="background:#4169E1"></span>SQL</div>
+            </div>
 
-        <div class="project-card scroll-animate">
-          <div class="project-image">
-            <img src="https://placehold.co/800x450/222222/ffffff?text=Comming+Soon" alt="Coming Soon">
-          </div>
-          <div class="project-content">
-            <h3>Coming Soon</h3>
-            <p>Estou utilizando o poder do ecossistema Spring para criar uma solução de Gestão de Sistemas .</p>
-            <div class="project-techs">
-              <div class="tech-icon" data-tooltip="Java">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Ícone Java" />
+            <div class="pipeline-slot">
+              <div class="pipeline" data-float="4">
+                <div class="pipeline__head">
+                  <span>Pipeline</span>
+                  <span class="pipeline__status"><span class="dot"></span>Online</span>
+                </div>
+                <div class="pipeline__list">
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Frontend</div>
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Backend</div>
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Database</div>
+                  <div class="pipeline__item"><span class="pipeline__ring"></span>Deploy</div>
+                </div>
               </div>
-              <div class="tech-icon" data-tooltip="Spring">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
-                  alt="Ícone Spring" />
-              </div>
-              <div class="tech-icon" data-tooltip="Postman">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
-                  alt="Ícone Postman" />
-              </div>
-              <div class="tech-icon" data-tooltip="Docker">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg"
-                  alt="Ícone Docker" />
-              </div>
-            </div>
-            <div class="project-links">
-              <button class="btn btn-disabled" disabled>Coming Soon</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="projects scroll-animate" id="contato">
-      <div class="container-contato">
+    <section class="section about" id="sobre">
+      <div class="container about__grid">
+        <div data-reveal>
+          <p class="eyebrow about__eyebrow">01 — Sobre mim</p>
 
-        <div class="contact-box">
-          <h3>Me envie uma mensagem:</h3>
-          <form action="https://formsubmit.co/julio25.dev@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="input-group">
-              <input type="text" name="name" placeholder="Seu Nome" required>
+          <div class="about__id">
+            <picture>
+              <source srcset="./assets/img/avatar.webp" type="image/webp" />
+              <img class="about__avatar" src="./assets/img/avatar.jpg" width="64" height="64"
+                alt="Retrato de Julio Eduardo" loading="lazy" decoding="async" />
+            </picture>
+            <div>
+              <div class="about__name">Julio Eduardo</div>
+              <div class="about__place">Goiânia, Goiás</div>
             </div>
-            <div class="input-group">
-              <input type="email" name="email" placeholder="Seu E-mail" required>
-            </div>
-            <div class="input-group">
-              <textarea name="message" rows="5" placeholder="Como posso te ajudar?" required></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Enviar Mensagem</button>
-          </form>
+          </div>
+
+          <h2 class="about__title">
+            Desenvolvedor Full Stack, formado em Análise e Desenvolvimento de Sistemas.
+          </h2>
+          <p class="about__text">
+            Foco em Node.js e Vue.js. No dia a dia, cuido da sustentação e evolução de sistemas em
+            produção: investigo a causa raiz dos problemas e implemento soluções definitivas. Hoje
+            exploro IA, LLMs e agentes para acelerar o ciclo de desenvolvimento.
+          </p>
         </div>
-        <div class="cv-card">
-          <div class="cv-content">
-            <div class="cv-icon-circle">
-              <i class="fa-solid fa-file-invoice"></i>
+
+        <div class="config" data-reveal aria-hidden="true">
+          <div class="config__head">
+            <span>julio.config.ts</span>
+            <span>TS</span>
+          </div>
+          <div class="config__body">
+            <div><span class="config__kw">export default</span> {</div>
+            <div class="indent">name: <span class="config__str">"Julio Eduardo"</span>,</div>
+            <div class="indent">role: <span class="config__str">"Full Stack Developer"</span>,</div>
+            <div class="indent">company: <span class="config__str">"iRancho"</span>,</div>
+            <div class="indent">education: <span class="config__str">"ADS · UNIGOIÁS"</span>,</div>
+            <div>}</div>
+          </div>
+          <div class="config__facts">
+            <div class="config__fact"><span class="config__check">✓</span>APIs REST</div>
+            <div class="config__fact"><span class="config__check">✓</span>Sustentação</div>
+            <div class="config__fact"><span class="config__check">✓</span>Frontend</div>
+            <div class="config__fact"><span class="config__check">✓</span>Databases</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills" id="stack">
+      <div class="container">
+        <div class="skills__head" data-reveal>
+          <div>
+            <p class="eyebrow">02 — Skills</p>
+            <h2 class="section-title">Minhas skills.</h2>
+          </div>
+        </div>
+        <div class="skills__grid">
+        <div class="skill-group" data-reveal>
+          <div class="skill-group__head">
+            <h3 class="skill-group__title">Frontend</h3>
+            <span class="skill-group__count" aria-hidden="true">05</span>
+          </div>
+          <div class="skill-group__items">
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg&quot;)" aria-hidden="true"></span>Vue.js
             </div>
-            <h3>Currículo</h3>
-            <p>Acesse minhas informações técnicas, habilidades e experiências detalhadas.</p>
-            <ul class="cv-highlights">
-              <li><i class="fa-solid fa-check"></i> Formação Acadêmica</li>
-              <li><i class="fa-solid fa-check"></i> Stack Tecnológica</li>
-              <li><i class="fa-solid fa-check"></i> Certificações</li>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg&quot;)" aria-hidden="true"></span>TypeScript
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg&quot;)" aria-hidden="true"></span>JavaScript
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg&quot;)" aria-hidden="true"></span>HTML
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg&quot;)" aria-hidden="true"></span>CSS
+            </div>
+          </div>
+        </div>
+        <div class="skill-group" data-reveal>
+          <div class="skill-group__head">
+            <h3 class="skill-group__title">Backend</h3>
+            <span class="skill-group__count" aria-hidden="true">04</span>
+          </div>
+          <div class="skill-group__items">
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg&quot;)" aria-hidden="true"></span>Node.js
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg&quot;)" aria-hidden="true"></span>Java
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg&quot;)" aria-hidden="true"></span>Spring Boot
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg&quot;)" aria-hidden="true"></span>C#
+            </div>
+          </div>
+        </div>
+        <div class="skill-group" data-reveal>
+          <div class="skill-group__head">
+            <h3 class="skill-group__title">Databases</h3>
+            <span class="skill-group__count" aria-hidden="true">03</span>
+          </div>
+          <div class="skill-group__items">
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg&quot;)" aria-hidden="true"></span>MySQL
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg&quot;)" aria-hidden="true"></span>PostgreSQL
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg&quot;)" aria-hidden="true"></span>MongoDB
+            </div>
+          </div>
+        </div>
+        <div class="skill-group" data-reveal>
+          <div class="skill-group__head">
+            <h3 class="skill-group__title">Tools</h3>
+            <span class="skill-group__count" aria-hidden="true">07</span>
+          </div>
+          <div class="skill-group__items">
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg&quot;)" aria-hidden="true"></span>Docker
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg&quot;)" aria-hidden="true"></span>Git
+            </div>
+            <div class="skill">
+              <span class="skill__icon skill__icon--invert" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg&quot;)" aria-hidden="true"></span>GitHub
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg&quot;)" aria-hidden="true"></span>Postman
+            </div>
+            <div class="skill">
+              <span class="skill__icon" style="background-image:url(&quot;https://cdn.simpleicons.org/claude/D97757&quot;)" aria-hidden="true"></span>Claude
+            </div>
+            <div class="skill">
+              <span class="skill__icon skill__icon--invert" style="background-image:url(&quot;https://cdn.simpleicons.org/cursor/000000&quot;)" aria-hidden="true"></span>Cursor
+            </div>
+            <div class="skill">
+              <span class="skill__icon skill__icon--invert" style="background-image:url(&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/svgs/solid/robot.svg&quot;)" aria-hidden="true"></span>LLMs & Agentes
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experiencia">
+      <div class="container experience__grid">
+        <div data-reveal>
+          <p class="eyebrow">03 — Experiência</p>
+          <h2 class="section-title">Experiência profissional.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline__line" data-grow aria-hidden="true"></div>
+          <ol class="timeline__list">
+          <li class="timeline__item" data-reveal>
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__meta">
+              <span class="timeline__year">2024</span>
+            </div>
+            <h3 class="timeline__role">Primeiros passos</h3>
+            <p class="timeline__text">Lógica de programação, fundamentos da web e primeiros projetos.</p>
+            <div class="timeline__tags">
+              <span class="timeline__tag">HTML</span>
+              <span class="timeline__tag">CSS</span>
+              <span class="timeline__tag">JavaScript</span>
+              <span class="timeline__tag">Git</span>
+            </div>
+          </li>
+          <li class="timeline__item" data-reveal>
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__meta">
+              <span class="timeline__year">2025</span>
+            </div>
+            <h3 class="timeline__role">Análise e Desenvolvimento de Sistemas</h3>
+            <div class="timeline__company">UNIGOIÁS — Centro Universitário de Goiás</div>
+            <p class="timeline__text">Base em back-end com APIs REST, SOLID, MVC e microsserviços.</p>
+            <div class="timeline__tags">
+              <span class="timeline__tag">Java</span>
+              <span class="timeline__tag">Spring Boot</span>
+              <span class="timeline__tag">C#</span>
+              <span class="timeline__tag">PostgreSQL</span>
+            </div>
+          </li>
+          <li class="timeline__item timeline__item--current" data-reveal>
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__meta">
+              <span class="timeline__year">mai 2026 — hoje</span>
+              <span class="timeline__badge"><span class="dot" data-pulse></span>Trabalho atual</span>
+            </div>
+            <h3 class="timeline__role">Desenvolvedor Full Stack</h3>
+            <div class="timeline__company">iRancho · Gestão pecuária · Goiânia</div>
+            <p class="timeline__text">Sustentação e evolução de sistemas web em produção.</p>
+            <ul class="timeline__points">
+              <li class="timeline__point">Estabilidade, disponibilidade e performance das aplicações</li>
+              <li class="timeline__point">Análise de incidentes e correção pela causa raiz</li>
+              <li class="timeline__point">Automações internas que eliminam tarefas repetitivas</li>
+              <li class="timeline__point">Otimização de consultas e performance do banco de dados</li>
+              <li class="timeline__point">Uso de IA (Claude, Cursor, LLMs) no ciclo de desenvolvimento</li>
             </ul>
-            <a href="assets/cv/Julio_Eduardo-Cv.pdf" download class="cv-button">
-              <span>Download CV</span>
-              <i class="fa-solid fa-download"></i>
-            </a>
-          </div>
+            <div class="timeline__tags">
+              <span class="timeline__tag">Vue.js</span>
+              <span class="timeline__tag">Node.js</span>
+              <span class="timeline__tag">TypeScript</span>
+              <span class="timeline__tag">SQL</span>
+              <span class="timeline__tag">Automação</span>
+              <span class="timeline__tag">IA</span>
+            </div>
+          </li>
+          </ol>
         </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projetos">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">04 — Projetos</p>
+          <h2 class="section-title">Trabalhos selecionados.</h2>
+        </div>
+        <div class="projects__list">
+        <article class="project" data-reveal>
+          <div class="project__spot" aria-hidden="true"></div>
+
+          <div class="project__media" aria-hidden="true">
+            <div class="project__frame">
+              <div class="win project__win">
+              <div class="win__bar">
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__tab">fluxos — api</span>
+              </div>
+              <div class="project__code">
+                <div class="endpoint">
+                  <span class="endpoint__verb verb--get">GET</span>
+                  <span class="endpoint__path">/ordens-servico</span>
+                  <span class="c-ok">200</span>
+                </div>
+                <div class="endpoint">
+                  <span class="endpoint__verb verb--post">POST</span>
+                  <span class="endpoint__path">/ordens-servico</span>
+                  <span class="c-ok">201</span>
+                </div>
+                <div class="endpoint">
+                  <span class="endpoint__verb verb--put">PUT</span>
+                  <span class="endpoint__path">/ordens-servico/{id}/finalizar</span>
+                  <span class="c-ok">200</span>
+                </div>
+                <div class="c-dim project__brace">{</div>
+                <div class="indent">"id": <span class="c-num">42</span>,</div>
+                <div class="indent">"cliente": <span class="c-str">"Fazenda Boa Vista"</span>,</div>
+                <div class="indent">"status": <span class="c-str">"FINALIZADA"</span></div>
+                <div class="c-dim">}</div>
+              </div>
+              </div>
+            </div>
+            <div class="project__overlay">
+              <span class="project__cta">VER NO GITHUB ↗</span>
+            </div>
+          </div>
+
+          <div class="project__body">
+            <div class="project__top">
+              <span class="project__num" aria-hidden="true">01</span>
+              <span class="project__status project__status--live">Funcional</span>
+            </div>
+            <h3 class="project__name">FluxOS</h3>
+            <p class="project__techs">Java 17 • Spring Boot 3 • JPA • PostgreSQL • Docker</p>
+            <p class="project__desc">API REST de gestão de ordens de serviço com Clean Architecture, relacionamento 1:N entre clientes e OS e validação de estados de negócio.</p>
+            <div class="project__links">
+            <a class="project__link" href="https://github.com/Julio25ED/FluxOS" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Ver FluxOS no GitHub
+            </a>
+            </div>
+          </div>
+        </article>
+        <article class="project" data-reveal>
+          <div class="project__spot" aria-hidden="true"></div>
+
+          <div class="project__media" aria-hidden="true">
+            <div class="project__frame">
+              <div class="win project__win">
+              <div class="win__bar">
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__tab">mail-api</span>
+              </div>
+              <div class="project__code">
+                <div><span class="c-kw">POST</span> /v1/emails/send</div>
+                <div class="c-dim project__brace project__brace--tight">{</div>
+                <div class="indent">"to": <span class="c-str">"cliente@email.com"</span>,</div>
+                <div class="indent">"template": <span class="c-str">"boas-vindas"</span></div>
+                <div class="c-dim">}</div>
+                <div class="flow">
+                  <span class="flow__step">queued</span>
+                  <span class="c-dim">→</span>
+                  <span class="flow__step">sending</span>
+                  <span class="c-dim">→</span>
+                  <span class="flow__step flow__step--done">delivered ✓</span>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="project__overlay">
+              <span class="project__cta">EM BREVE</span>
+            </div>
+          </div>
+
+          <div class="project__body">
+            <div class="project__top">
+              <span class="project__num" aria-hidden="true">02</span>
+              <span class="project__status">Coming soon</span>
+            </div>
+            <h3 class="project__name">Mail API</h3>
+            <p class="project__techs">Node.js • TypeScript • Filas • SMTP</p>
+            <p class="project__desc">API para envio de e-mails transacionais com templates, fila de processamento e acompanhamento de status de entrega.</p>
+            <div class="project__links">
+            <span class="project__soon">Repositório em breve</span>
+            </div>
+          </div>
+        </article>
+        <article class="project" data-reveal>
+          <div class="project__spot" aria-hidden="true"></div>
+
+          <div class="project__media" aria-hidden="true">
+            <div class="project__frame">
+              <div class="win project__win">
+              <div class="win__bar">
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__dot"></span>
+                <span class="win__tab">ProcessadorPagamento.cs</span>
+              </div>
+              <div class="project__code">
+                <div><span class="c-kw">ICalculadoraDesconto</span> calc = <span class="c-kw">new</span> DescontoVIP();</div>
+                <div><span class="c-kw">var</span> processador = <span class="c-kw">new</span> ProcessadorPagamento(calc);</div>
+                <div>processador.ProcessarPagamento(<span class="c-num">1000</span>, <span class="c-num">3</span>);</div>
+                <div class="console">Valor original: R$ 1000,00</div>
+                <div class="c-dim">Desconto: R$ 100,00 (10% VIP)</div>
+                <div class="c-ok">✓ Valor final: R$ 900,00</div>
+              </div>
+              </div>
+            </div>
+            <div class="project__overlay">
+              <span class="project__cta">VER NO GITHUB ↗</span>
+            </div>
+          </div>
+
+          <div class="project__body">
+            <div class="project__top">
+              <span class="project__num" aria-hidden="true">03</span>
+              <span class="project__status project__status--live">Estudo</span>
+            </div>
+            <h3 class="project__name">Sistema Bancário DIP</h3>
+            <p class="project__techs">C# • .NET 8 • SOLID</p>
+            <p class="project__desc">Processador de pagamentos que demonstra o Princípio da Inversão de Dependência com descontos por tipo de cliente.</p>
+            <div class="project__links">
+            <a class="project__link" href="https://github.com/Julio25ED/sistema-bancario-dip" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Ver Sistema Bancário DIP no GitHub
+            </a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contato">
+      <div class="contact__glow" data-drift="2" aria-hidden="true"></div>
+
+      <div class="contact__inner" data-reveal>
+        <p class="eyebrow contact__eyebrow">05 — Contato</p>
+        <h2 class="contact__title">Vamos conversar?</h2>
+        <p class="contact__lead">
+          Estou aberto a oportunidades, projetos e conexões profissionais.
+        </p>
+
+        <div class="contact__actions">
+          <a class="btn btn--solid" href="mailto:julio25.dev@gmail.com">
+            <i class="fa-regular fa-envelope" aria-hidden="true"></i> julio25.dev@gmail.com
+          </a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/juliodev25/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/Julio25ED" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </div>
+
+        <a class="cv" href="./assets/cv/Julio_Eduardo-Cv-v2.pdf" download>
+          <span class="cv__file" aria-hidden="true">PDF</span>
+          <span class="cv__text">
+            <span class="cv__title">Currículo — Julio Eduardo</span>
+            <span class="cv__sub">Experiência, formação e stack completa</span>
+          </span>
+          <span class="cv__action">
+            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i> Baixar
+          </span>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-text">
-        <span class="footer-name">© 2025 Julio Eduardo – Todos os direitos reservados.</span>
-      </div>
-      <div class="footer-email">
-        <a href="mailto:julio25.dev@email.com">julio25.dev@gmail.com</a>
+    <div class="footer__inner">
+      <span>© 2026 Julio Eduardo · Todos os direitos reservados.</span>
+      <div class="footer__links">
+        <a href="https://github.com/Julio25ED" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/juliodev25/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="footer-line"></div>
   </footer>
-  <!-- JavaScript -->
-  <script src="js/bg-stars.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="js/configs.js"></script>
+
+  <script src="./js/motion.js"></script>
+  <script src="./js/theme.js"></script>
+  <script src="./js/hero.js"></script>
+  <script src="./js/spotlight.js"></script>
+  <script src="./js/scroll.js"></script>
 </body>
 
 </html>
