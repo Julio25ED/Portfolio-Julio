@@ -1,0 +1,354 @@
+/* ==========================================================================
+   base.css — reset, design tokens, temas, tipografia, fundo fixo e primitivos
+   compartilhados (container, eyebrow, títulos de seção, botões, janelas de
+   código, pontos de status). Único arquivo autorizado a estilizar :root,
+   html e body — os arquivos de seção só estilizam dentro da própria raiz.
+   ========================================================================== */
+
+/* --- Tokens: tema escuro (padrão) ---------------------------------------- */
+:root {
+  --accHue: 285;
+
+  --bg: #080808;
+  --fg: #EDEDEA;
+  --muted: #8A8A86;
+  --line: rgba(255, 255, 255, 0.08);
+  --lineStrong: rgba(255, 255, 255, 0.22);
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface2: rgba(255, 255, 255, 0.06);
+  --chip: rgba(255, 255, 255, 0.08);
+  --glass: rgba(18, 18, 18, 0.6);
+  --grid: rgba(255, 255, 255, 0.045);
+  --spot: rgba(255, 255, 255, 0.06);
+  --invert: invert(1);
+
+  --acc: oklch(0.70 0.16 var(--accHue));
+  --accGlow: oklch(0.68 0.17 var(--accHue) / 0.18);
+  --str: oklch(0.80 0.11 150);
+
+  /* Cores fixas, independentes do tema (janelas de código, status) */
+  --code-bg: #0b0b0d;
+  --code-fg: #E6E6E3;
+  --code-tab: #9A9A96;
+  --code-line: rgba(255, 255, 255, 0.06);
+  --ok: oklch(0.78 0.15 150);
+  --ok-bright: oklch(0.80 0.14 150);
+  --num: oklch(0.82 0.13 80);
+  --strFixed: oklch(0.82 0.11 150);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --container: 1240px;
+  --gutter: clamp(20px, 5vw, 72px);
+}
+
+/* --- Tokens: tema claro --------------------------------------------------- */
+[data-theme="light"] {
+  --bg: #F7F7F5;
+  --fg: #111110;
+  --muted: #6B6B66;
+  --line: rgba(0, 0, 0, 0.09);
+  --lineStrong: rgba(0, 0, 0, 0.25);
+  --surface: rgba(0, 0, 0, 0.025);
+  --surface2: rgba(0, 0, 0, 0.05);
+  --chip: rgba(0, 0, 0, 0.06);
+  --glass: rgba(255, 255, 255, 0.7);
+  --grid: rgba(0, 0, 0, 0.05);
+  --spot: rgba(0, 0, 0, 0.04);
+  --invert: none;
+
+  --acc: oklch(0.52 0.18 var(--accHue));
+  --accGlow: oklch(0.62 0.17 var(--accHue) / 0.16);
+  --str: oklch(0.52 0.12 150);
+}
+
+/* --- Reset --------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* A nav flutuante ocupa ~66px no topo; evita que âncoras fiquem sob ela */
+  scroll-padding-top: 90px;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Geist", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background .4s ease, color .4s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: oklch(0.68 0.17 var(--accHue) / 0.35);
+}
+
+/* Foco visível em tudo que recebe teclado — o anel usa a cor de destaque e
+   fica sempre legível sobre fundo escuro ou claro. */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- Fundo fixo (três camadas, atrás de todo o conteúdo) ------------------ */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 25%, transparent 85%);
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 25%, transparent 85%);
+}
+
+/* Glow que segue o cursor; --gx/--gy são atualizados em js/spotlight.js */
+.bg__cursor {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at var(--gx, 60%) var(--gy, 35%), var(--accGlow), transparent 60%);
+  opacity: .55;
+}
+
+.bg__glow {
+  position: absolute;
+  left: -200px;
+  bottom: -240px;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accGlow) 0%, transparent 65%);
+}
+
+/* --- Barra de progresso de leitura --------------------------------------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.progress__bar {
+  width: 0%;
+  height: 100%;
+  background: var(--acc);
+}
+
+/* --- Estrutura das seções ------------------------------------------------ */
+/* Toda section cria contexto de empilhamento próprio para ficar sobre .bg */
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(80px, 10vw, 140px) var(--gutter);
+}
+
+.container {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* --- Primitivos de tipografia ------------------------------------------- */
+.eyebrow {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.section-head {
+  margin-bottom: 56px;
+}
+
+/* --- Botões (compartilhados por Hero e Contato) -------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn--solid {
+  background: var(--fg);
+  color: var(--bg);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn--solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--accGlow);
+}
+
+.btn--ghost {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.btn--ghost:hover {
+  border-color: var(--lineStrong);
+  transform: translateY(-2px);
+}
+
+/* --- Janelas de código (sempre escuras, nos dois temas) ------------------ */
+.win {
+  overflow: hidden;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font-family: "Geist Mono", ui-monospace, monospace;
+}
+
+.win__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--code-line);
+}
+
+.win__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.win__dot:nth-child(1) { background: #FF5F57; }
+.win__dot:nth-child(2) { background: #FEBC2E; }
+.win__dot:nth-child(3) { background: #28C840; }
+
+.win__tab {
+  margin-left: 10px;
+  font-size: 11px;
+  color: var(--code-tab);
+}
+
+/* --- Pontos de status ---------------------------------------------------- */
+.dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+/* --- Scroll reveal ------------------------------------------------------- */
+/* js/scroll.js marca os elementos fora da primeira dobra com .is-hidden e
+   os anima ao entrarem na viewport. Sem JS, nada fica invisível. */
+.is-hidden {
+  opacity: 0;
+}
+
+/* --- Reduced motion ------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* --- Footer -------------------------------------------------------------- */
+.footer {
+  position: relative;
+  border-top: 1px solid var(--line);
+  padding: 28px var(--gutter);
+}
+
+.footer__inner {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer__links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__links a {
+  transition: color .2s ease;
+}
+
+.footer__links a:hover {
+  color: var(--fg);
+}
